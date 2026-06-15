@@ -1,0 +1,95 @@
+<view class="container">
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="nav-title">{{monthName}} {{year}}</view>
+    <view class="nav-home" bindtap="goHome">
+      <text class="home-icon">🏠</text>
+    </view>
+  </view>
+
+  <view class="month-stats">
+    <text class="stat">This Month {{monthTotal}} brews / {{monthShops}} shops</text>
+  </view>
+
+  <view class="calendar">
+    <view class="weekday-row">
+      <view wx:for="{{weekDays}}" wx:key="index" class="weekday">{{item}}</view>
+    </view>
+    <view class="days-grid">
+      <view 
+        wx:for="{{days}}" 
+        wx:key="index" 
+        class="day-cell {{item.empty ? 'empty' : ''}} {{item.isToday ? 'today' : ''}} {{item.hasRecord ? 'has-record' : ''}} {{selectedDay === item.day ? 'selected' : ''}}"
+        bindtap="selectDay"
+        data-day="{{item.day}}"
+        data-date="{{item.date}}"
+      >
+        <text class="day-number">{{item.day}}</text>
+        <view wx:if="{{item.hasRecord}}" class="day-cups">
+          <text class="cup-icon-small">{{item.firstIcon}}</text>
+          <text class="cup-num" wx:if="{{item.cupCount > 1}}"> ×{{item.cupCount}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="quick-actions">
+    <view class="action-btn camera-btn" bindtap="takePhotoForIcon">
+      <text class="action-icon">📷</text>
+      <text class="action-text">拍照生成小图标</text>
+    </view>
+    <view class="action-btn add-btn" bindtap="goToAdd">
+      <text class="action-icon">✏️</text>
+      <text class="action-text">添加记录</text>
+    </view>
+  </view>
+
+  <view class="selected-day-detail" wx:if="{{selectedDay}}">
+    <view class="detail-header">
+      <text class="detail-date">{{year}}年{{month}}月{{selectedDay}}日</text>
+      <text class="detail-count">{{dayRecords.length}}杯</text>
+    </view>
+    
+    <view class="records-list" wx:if="{{dayRecords.length > 0}}">
+      <view 
+        wx:for="{{dayRecords}}" 
+        wx:key="id" 
+        class="record-card"
+        bindtap="goToDetail"
+        data-id="{{item.id}}"
+      >
+        <view class="record-icon" wx:if="{{item.icon}}">{{item.icon}}</view>
+        <view class="record-icon" wx:else>☕</view>
+        <view class="record-info">
+          <view class="record-shop">{{item.coffeeShop || '未命名'}}</view>
+          <view class="record-detail">{{item.name || ''}} {{item.cups}}杯 · {{item.cupSize || '中杯'}}</view>
+        </view>
+        <view class="record-arrow">›</view>
+      </view>
+    </view>
+    
+    <view class="no-records" wx:else>
+      <text>还没有记录，点击上方添加</text>
+    </view>
+  </view>
+
+  <view class="quick-add-modal" wx:if="{{showQuickAdd}}">
+    <view class="modal-mask" bindtap="closeQuickAdd"></view>
+    <view class="modal-content">
+      <view class="modal-title">📸 拍照生成小图标</view>
+      <view class="photo-preview" wx:if="{{tempPhotoPath}}">
+        <image mode="aspectFill" src="{{tempPhotoPath}}"></image>
+      </view>
+      <view class="generated-result" wx:if="{{generatedIcon}}">
+        <text class="big-icon">{{generatedIcon}}</text>
+        <text class="result-text">已为你生成专属咖啡图标!</text>
+      </view>
+      <view class="modal-actions">
+        <button class="btn-cancel" bindtap="closeQuickAdd">取消</button>
+        <button class="btn-confirm" bindtap="confirmIconAndAdd">用此图标添加记录</button>
+      </view>
+    </view>
+  </view>
+</view>

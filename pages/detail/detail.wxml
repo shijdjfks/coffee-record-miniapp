@@ -1,0 +1,55 @@
+<view class="container">
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="nav-title">记录详情</view>
+    <view class="nav-home" bindtap="goHome">
+      <text class="home-icon">🏠</text>
+    </view>
+  </view>
+
+  <view class="detail-card" wx:if="{{record}}">
+    <view class="record-icon-large">{{record.icon || '☕'}}</view>
+    
+    <view class="info-section">
+      <view class="info-label">咖啡店</view>
+      <view class="info-value">{{record.coffeeShop || '未命名'}}</view>
+    </view>
+    
+    <view class="info-section" wx:if="{{record.name}}">
+      <view class="info-label">咖啡名字</view>
+      <view class="info-value">{{record.name}}</view>
+    </view>
+    
+    <view class="info-row">
+      <view class="info-section">
+        <view class="info-label">杯数</view>
+        <view class="info-value">{{record.cups}}杯</view>
+      </view>
+      <view class="info-section">
+        <view class="info-label">杯型</view>
+        <view class="info-value">{{record.cupSize || '中杯'}}</view>
+      </view>
+    </view>
+    
+    <view class="info-section">
+      <view class="info-label">日期</view>
+      <view class="info-value">{{record.date}}</view>
+    </view>
+    
+    <view class="info-section" wx:if="{{record.comment}}">
+      <view class="info-label">备注</view>
+      <view class="info-value notes">{{record.comment}}</view>
+    </view>
+    
+    <view class="photo-section" wx:if="{{record.photoUrl}}">
+      <image mode="aspectFill" src="{{record.photoUrl}}" class="record-photo"></image>
+    </view>
+  </view>
+  
+  <view class="action-buttons">
+  <button class="btn-edit" bindtap="editRecord">✏️ 编辑</button>
+  <button class="btn-delete" bindtap="deleteRecord">🗑️ 删除</button>
+</view>
+</view>

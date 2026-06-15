@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/year/year",
+    "pages/month/month",
+    "pages/week/week",
+    "pages/detail/detail",
+    "pages/add/add"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#8B5A2B",
+    "navigationBarTitleText": "Brewlog",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5E6D3"
+  },
+  "tabBar": {
+    "color": "#A0522D",
+    "selectedColor": "#5D3A1A",
+    "backgroundColor": "#F5E6D3",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/year/year",
+        "text": "年视图"
+      },
+      {
+        "pagePath": "pages/week/week",
+        "text": "周视图"
+      }
+    ]
+  },
+  "permission": {
+    "scope.camera": {
+      "desc": "用于拍摄咖啡照片"
+    },
+    "scope.writePhotosAlbum": {
+      "desc": "用于保存咖啡照片"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

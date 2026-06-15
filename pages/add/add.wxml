@@ -1,0 +1,105 @@
+<view class="container">
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">
+      <text class="back-icon">←</text>
+    </view>
+    <view class="nav-title">{{isEditing ? '编辑记录' : '添加记录'}}</view>
+    <view class="nav-home" bindtap="goHome">
+      <text class="home-icon">🏠</text>
+    </view>
+  </view>
+
+  <view class="form-card">
+    <view class="form-header">
+      <view class="icon-display" bindtap="toggleIconPicker">
+        <text class="header-icon">{{icon || '☕'}}</text>
+      </view>
+      <text class="header-text" bindtap="toggleIconPicker">点击选择图标</text>
+    </view>
+    
+    <view class="icon-picker" wx:if="{{showIconPicker}}">
+      <view 
+        wx:for="{{iconList}}" 
+        wx:key="index"
+        class="icon-item {{icon === item ? 'selected' : ''}}"
+        bindtap="selectIcon"
+        data-icon="{{item}}"
+      >
+        <text>{{item}}</text>
+      </view>
+    </view>
+    
+    <view class="form-section">
+      <view class="form-label">日期</view>
+      <picker mode="date" value="{{date}}" bindchange="onDateChange">
+        <view class="picker-input">
+          {{date || '选择日期'}}
+        </view>
+      </picker>
+    </view>
+    
+    <view class="form-section">
+      <view class="form-label">咖啡店</view>
+      <input 
+        class="text-input" 
+        placeholder="输入咖啡店名称" 
+        value="{{shop}}"
+        bindinput="onShopInput"
+      />
+    </view>
+    
+    <view class="form-section">
+      <view class="form-label">咖啡名字</view>
+      <input 
+        class="text-input" 
+        placeholder="输入咖啡名字（如：拿铁、美式）" 
+        value="{{coffeeName}}"
+        bindinput="onCoffeeNameInput"
+      />
+    </view>
+    
+    <view class="form-section">
+      <view class="form-label">杯数</view>
+      <view class="counter">
+        <view class="counter-btn" bindtap="onCupsChange" data-value="{{cups - 1}}">-</view>
+        <view class="counter-value">{{cups}}</view>
+        <view class="counter-btn" bindtap="onCupsChange" data-value="{{cups + 1}}">+</view>
+      </view>
+    </view>
+    
+    <view class="form-section">
+      <view class="form-label">杯型</view>
+      <picker mode="selector" range="{{sizes}}" value="{{sizes.indexOf(size)}}" bindchange="onSizeChange">
+        <view class="picker-input">
+          {{size}}
+        </view>
+      </picker>
+    </view>
+    
+    <view class="form-section">
+      <view class="form-label">备注</view>
+      <textarea 
+        class="textarea-input" 
+        placeholder="写下你的感受..." 
+        value="{{notes}}"
+        bindinput="onNotesInput"
+      ></textarea>
+    </view>
+    
+    <view class="form-section">
+      <view class="form-label">照片</view>
+      <view class="photo-area" bindtap="takePhoto">
+        <image wx:if="{{photo}}" mode="aspectFill" src="{{photo}}" class="preview-photo"></image>
+        <view wx:else class="photo-placeholder">
+          <text class="photo-icon">📷</text>
+          <text class="photo-text">点击拍照</text>
+        </view>
+        <view wx:if="{{photo}}" class="remove-photo" catchtap="removePhoto">×</view>
+      </view>
+    </view>
+  </view>
+  
+  <button class="save-btn" bindtap="saveRecord">
+    {{isEditing ? '更新记录' : '保存记录'}}
+  </button>
+</view>

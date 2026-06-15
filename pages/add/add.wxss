@@ -1,0 +1,229 @@
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.nav-back {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  border-radius: 50%;
+  box-shadow: 0 2rpx 12rpx rgba(139, 90, 43, 0.1);
+}
+
+.back-icon {
+  font-size: 32rpx;
+  color: var(--coffee-darker);
+  font-weight: 600;
+}
+
+.nav-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--coffee-darker);
+}
+
+.nav-home {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  border-radius: 50%;
+  box-shadow: 0 2rpx 12rpx rgba(139, 90, 43, 0.1);
+}
+
+.home-icon {
+  font-size: 28rpx;
+}
+
+.nav-home:active {
+  background: var(--coffee-lightest);
+}
+
+.form-card {
+  background: #FFF;
+  border-radius: 32rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 24rpx rgba(139, 90, 43, 0.1);
+}
+
+.form-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24rpx 0 32rpx;
+  border-bottom: 2rpx solid var(--coffee-lightest);
+  margin-bottom: 24rpx;
+}
+
+.header-icon {
+  font-size: 80rpx;
+  margin-bottom: 8rpx;
+}
+
+.header-text {
+  font-size: 22rpx;
+  color: var(--coffee-medium);
+}
+
+.icon-picker {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 16rpx;
+  padding: 20rpx;
+  background: var(--coffee-lightest);
+  border-radius: 16rpx;
+  margin-bottom: 24rpx;
+}
+
+.icon-item {
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  border-radius: 16rpx;
+  font-size: 40rpx;
+  box-shadow: 0 2rpx 8rpx rgba(139, 90, 43, 0.08);
+}
+
+.icon-item.selected {
+  background: var(--coffee-dark);
+  box-shadow: 0 4rpx 12rpx rgba(139, 90, 43, 0.2);
+}
+
+.icon-item:active {
+  transform: scale(0.9);
+}
+
+.form-section {
+  margin-bottom: 24rpx;
+}
+
+.form-label {
+  font-size: 22rpx;
+  color: var(--coffee-medium);
+  margin-bottom: 12rpx;
+  text-transform: uppercase;
+  letter-spacing: 1rpx;
+}
+
+.picker-input, .text-input {
+  background: var(--coffee-lightest);
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  color: var(--coffee-darker);
+}
+
+.textarea-input {
+  background: var(--coffee-lightest);
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  font-size: 28rpx;
+  color: var(--coffee-darker);
+  width: 100%;
+  height: 120rpx;
+  box-sizing: border-box;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.counter-btn {
+  width: 64rpx;
+  height: 64rpx;
+  background: var(--coffee-lightest);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  color: var(--coffee-dark);
+}
+
+.counter-btn:active {
+  background: var(--coffee-light);
+}
+
+.counter-value {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: var(--coffee-darker);
+  min-width: 60rpx;
+  text-align: center;
+}
+
+.photo-area {
+  position: relative;
+  background: var(--coffee-lightest);
+  border-radius: 16rpx;
+  overflow: hidden;
+  min-height: 200rpx;
+}
+
+.preview-photo {
+  width: 100%;
+  height: 300rpx;
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48rpx;
+}
+
+.photo-icon {
+  font-size: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.photo-text {
+  font-size: 24rpx;
+  color: var(--coffee-medium);
+}
+
+.remove-photo {
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+  width: 48rpx;
+  height: 48rpx;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 32rpx;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-darker) 100%);
+  color: #FFF;
+  border-radius: 40rpx;
+  padding: 24rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-top: 32rpx;
+  border: none;
+  box-shadow: 0 8rpx 24rpx rgba(139, 90, 43, 0.3);
+}
+
+.save-btn:active {
+  opacity: 0.9;
+  transform: scale(0.98);
+}

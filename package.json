@@ -1,0 +1,12 @@
+{
+  "name": "brewlog",
+  "version": "1.0.0",
+  "description": "Brewlog - 个人咖啡记录小程序",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["coffee", "journal", "wechat", "miniprogram"],
+  "author": "",
+  "license": "MIT"
+}

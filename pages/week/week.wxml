@@ -1,0 +1,68 @@
+<view class="container">
+  <view class="nav-bar">
+    <view class="nav-left"></view>
+    <view class="nav-title">Weekly Brews</view>
+    <view class="nav-home" bindtap="goHome">
+      <text class="home-icon">🏠</text>
+    </view>
+  </view>
+
+  <view class="header">
+    <view class="week-nav">
+      <view class="nav-btn" bindtap="prevWeek">‹</view>
+      <view class="week-range">{{weekRange}}</view>
+      <view class="nav-btn" bindtap="nextWeek">›</view>
+    </view>
+    <view class="week-stats">
+      <text class="stat">This Week {{weekTotal}} brews / {{weekShops}} shops</text>
+    </view>
+  </view>
+
+  <view class="week-days">
+    <view 
+      wx:for="{{weekDays}}" 
+      wx:key="dateStr" 
+      class="day-card {{item.isToday ? 'today' : ''}} {{item.records.length > 0 ? 'has-record' : ''}}"
+    >
+      <view class="day-date-circle">
+        <view class="day-name">{{item.dayName}}</view>
+        <view class="day-num">{{item.day}}</view>
+      </view>
+
+      <view class="day-content" wx:if="{{item.records.length > 0}}">
+        <view 
+          wx:for="{{item.records}}" 
+          wx:for-item="record" 
+          wx:key="id"
+          class="record-item"
+          bindtap="goToDetail"
+          data-id="{{record.id}}"
+        >
+          <view class="record-avatar" wx:if="{{record.photoUrl}}">
+            <image mode="aspectFill" src="{{record.photoUrl}}"></image>
+          </view>
+          <view class="record-icon-box" wx:else>
+            <text class="record-icon">{{record.icon || '☕'}}</text>
+          </view>
+          <view class="record-details">
+            <view class="record-shop">{{record.coffeeShop || '未命名'}}</view>
+            <view class="record-meta">{{record.name || ''}} {{record.cups}}杯 · {{record.cupSize || '中杯'}}</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="day-empty" wx:else>
+        <view class="empty-cup">☕</view>
+        <view class="empty-text">休息日</view>
+      </view>
+
+      <view class="add-btn" bindtap="goToAdd" data-date="{{item.dateStr}}">
+        <text class="add-icon">+</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-floating" bindtap="goToAdd" data-date="{{weekDays[3] ? weekDays[3].dateStr : ''}}">
+    <text class="add-icon">+</text>
+  </view>
+</view>

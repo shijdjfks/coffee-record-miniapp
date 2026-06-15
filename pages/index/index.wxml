@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="nav-bar">
+    <view class="nav-left"></view>
+    <view class="nav-title">Brewlog</view>
+    <view class="nav-home" bindtap="goHome">
+      <text class="home-icon">🏠</text>
+    </view>
+  </view>
+
+  <view class="logo-section">
+    <view class="logo-icon">☕</view>
+    <view class="app-name">个人咖啡手帐</view>
+    <view class="app-slogan">记录每一杯咖啡的美好</view>
+  </view>
+
+  <view class="welcome-card">
+    <view class="welcome-text">欢迎来到你的</view>
+    <view class="welcome-text accent">咖啡时光</view>
+  </view>
+
+  <view class="features">
+    <view class="feature-item" bindtap="goToAddRecord">
+      <text class="feature-icon">📅</text>
+      <text class="feature-text">记录每日咖啡</text>
+      <text class="feature-arrow">›</text>
+    </view>
+    <view class="feature-item" bindtap="goToCamera">
+      <text class="feature-icon">📸</text>
+      <text class="feature-text">拍照留念分享</text>
+      <text class="feature-arrow">›</text>
+    </view>
+    <view class="feature-item" bindtap="goToStats">
+      <text class="feature-icon">📊</text>
+      <text class="feature-text">统计喝咖啡习惯</text>
+      <text class="feature-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="login-section">
+    <button 
+      class="login-btn" 
+      bindtap="getUserProfile"
+      wx:if="{{canIUse}}"
+    >
+      <text class="btn-icon">🍵</text>
+      <text class="btn-text">微信一键登录</text>
+    </button>
+
+    <view class="skip-btn" bindtap="skipLogin">
+      稍后登录
+    </view>
+  </view>
+
+  <view class="footer-text">
+    登录即表示同意《用户协议》和《隐私政策》
+  </view>
+</view>

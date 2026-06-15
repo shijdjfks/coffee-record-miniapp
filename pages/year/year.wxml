@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="nav-bar">
+    <view class="nav-left"></view>
+    <view class="nav-title">年视图</view>
+    <view class="nav-home" bindtap="goHome">
+      <text class="home-icon">🏠</text>
+    </view>
+  </view>
+
+  <view class="year-header">
+    <view class="year-nav">
+      <view class="year-btn" bindtap="prevYear">‹</view>
+      <text class="year-title">{{year}}</text>
+      <view class="year-btn" bindtap="nextYear">›</view>
+    </view>
+    <view class="year-stats">
+      <view class="stat-item">
+        <text class="stat-value">{{yearTotal}}</text>
+        <text class="stat-label">今年杯数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{yearShops}}</text>
+        <text class="stat-label">店铺数</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="this-month-summary">
+    <text class="summary-text">This Month {{thisMonth}} brews / {{thisMonthShops}} shops</text>
+  </view>
+
+  <view class="months-grid">
+    <view 
+      wx:for="{{months}}" 
+      wx:key="month"
+      class="month-card {{item.isCurrentMonth ? 'today' : ''}} {{item.isEmpty ? 'empty' : ''}}"
+      bindtap="goToMonth"
+      data-month="{{item.month}}"
+    >
+      <text class="month-name">{{item.monthName}}</text>
+      <text class="month-cups">{{item.cups}}</text>
+      <text class="month-shops" wx:if="{{item.shops > 0}}">{{item.shops}} shops</text>
+      <text class="month-shops" wx:else>-</text>
+    </view>
+  </view>
+</view>

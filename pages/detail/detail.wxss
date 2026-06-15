@@ -1,0 +1,130 @@
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24rpx;
+}
+
+.nav-back {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  border-radius: 50%;
+  box-shadow: 0 2rpx 12rpx rgba(139, 90, 43, 0.1);
+}
+
+.back-icon {
+  font-size: 32rpx;
+  color: var(--coffee-darker);
+  font-weight: 600;
+}
+
+.nav-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: var(--coffee-darker);
+}
+
+.nav-home {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  border-radius: 50%;
+  box-shadow: 0 2rpx 12rpx rgba(139, 90, 43, 0.1);
+}
+
+.home-icon {
+  font-size: 28rpx;
+}
+
+.nav-home:active {
+  background: var(--coffee-lightest);
+}
+
+.detail-card {
+  background: #FFF;
+  border-radius: 32rpx;
+  padding: 40rpx;
+  box-shadow: 0 4rpx 24rpx rgba(139, 90, 43, 0.1);
+}
+
+.record-icon-large {
+  font-size: 100rpx;
+  text-align: center;
+  margin-bottom: 32rpx;
+}
+
+.info-section {
+  margin-bottom: 24rpx;
+}
+
+.info-row {
+  display: flex;
+  gap: 32rpx;
+}
+
+.info-row .info-section {
+  flex: 1;
+}
+
+.info-label {
+  font-size: 22rpx;
+  color: var(--coffee-medium);
+  margin-bottom: 8rpx;
+  text-transform: uppercase;
+  letter-spacing: 1rpx;
+}
+
+.info-value {
+  font-size: 30rpx;
+  color: var(--coffee-darker);
+  font-weight: 600;
+}
+
+.info-value.notes {
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.photo-section {
+  margin-top: 24rpx;
+}
+
+.record-photo {
+  width: 100%;
+  height: 400rpx;
+  border-radius: 16rpx;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 32rpx;
+}
+
+.btn-edit, .btn-delete {
+  flex: 1;
+  padding: 24rpx;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  border: none;
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-darker) 100%);
+  color: #FFF;
+}
+
+.btn-delete {
+  background: #F5E6D3;
+  color: #8B5A2B;
+  background: var(--coffee-lightest);
+  color: var(--coffee-dark);
+}
