@@ -7,82 +7,55 @@
     </view>
   </view>
 
-  <view class="logo-section">
+  <view class="login-header">
     <view class="logo-icon">☕</view>
-    <view class="app-name">个人咖啡手帐</view>
-    <view class="app-slogan">记录每一杯咖啡的美好</view>
+    <view class="login-title">欢迎回来</view>
+    <view class="login-subtitle">登录你的咖啡手帐</view>
   </view>
 
-  <view class="welcome-card">
-    <view class="welcome-text">欢迎来到你的</view>
-    <view class="welcome-text accent">咖啡时光</view>
-  </view>
-
-  <view class="features">
-    <view class="feature-item" bindtap="goToAddRecord">
-      <text class="feature-icon">📅</text>
-      <text class="feature-text">记录每日咖啡</text>
-      <text class="feature-arrow">›</text>
-    </view>
-    <view class="feature-item" bindtap="goToCamera">
-      <text class="feature-icon">📸</text>
-      <text class="feature-text">拍照留念分享</text>
-      <text class="feature-arrow">›</text>
-    </view>
-    <view class="feature-item" bindtap="goToStats">
-      <text class="feature-icon">📊</text>
-      <text class="feature-text">统计喝咖啡习惯</text>
-      <text class="feature-arrow">›</text>
-    </view>
-  </view>
-
-  <view class="year-section">
-    <view class="year-header">
-      <view class="year-nav">
-        <view class="year-btn" bindtap="prevYear">‹</view>
-        <view class="year-title">{{year}}</view>
-        <view class="year-btn" bindtap="nextYear">›</view>
-      </view>
-      <view class="year-stats">
-        <view class="stat-item">
-          <text class="stat-value">{{yearTotal}}</text>
-          <text class="stat-label">杯</text>
-        </view>
-        <view class="stat-item">
-          <text class="stat-value">{{yearShops}}</text>
-          <text class="stat-label">店</text>
-        </view>
-      </view>
+  <view class="login-card">
+    <view class="input-group {{phoneFocused ? 'focused' : ''}}">
+      <text class="input-icon">📱</text>
+      <input 
+        class="input-field"
+        type="number"
+        maxlength="11"
+        placeholder="请输入手机号"
+        placeholder-class="input-placeholder"
+        value="{{phone}}"
+        bindinput="onPhoneInput"
+        bindfocus="onPhoneFocus"
+        bindblur="onPhoneBlur"
+      />
     </view>
 
-    <view class="months-grid">
-      <view 
-        wx:for="{{months}}" 
-        wx:key="index" 
-        class="month-card {{item.isCurrentMonth ? 'today' : ''}} {{item.isEmpty ? 'empty' : ''}}"
-        bindtap="goToMonth"
-        data-month="{{item.month}}"
-      >
-        <view class="month-name">{{item.monthName}}</view>
-        <view class="month-cups">{{item.cups}}</view>
-        <view class="month-shops">{{item.shops}}店</view>
-      </view>
+    <view class="input-divider"></view>
+
+    <view class="input-group {{passwordFocused ? 'focused' : ''}}">
+      <text class="input-icon">🔒</text>
+      <input 
+        class="input-field"
+        password="{{true}}"
+        placeholder="请输入密码"
+        placeholder-class="input-placeholder"
+        value="{{password}}"
+        bindinput="onPasswordInput"
+        bindfocus="onPasswordFocus"
+        bindblur="onPasswordBlur"
+      />
     </view>
   </view>
 
-  <view class="login-section">
-    <button 
-      class="login-btn" 
-      bindtap="getUserProfile"
-      wx:if="{{canIUse}}"
-    >
-      <text class="btn-icon">🍵</text>
-      <text class="btn-text">微信一键登录</text>
-    </button>
+  <view class="forgot-password" bindtap="goToForgotPassword">
+    忘记密码？
+  </view>
 
-    <view class="skip-btn" bindtap="skipLogin">
-      稍后登录
-    </view>
+  <button class="login-btn" bindtap="doLogin">
+    <text>登 录</text>
+  </button>
+
+  <view class="register-tip" bindtap="goToRegister">
+    还没有账号？<text class="register-link">去注册</text>
   </view>
 
   <view class="footer-text">

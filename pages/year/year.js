@@ -16,6 +16,8 @@ Page({
   },
 
   onShow() {
+    console.log('[year] ===== onShow 调用 =====');
+    console.log('[year] 当前 year:', this.data.year);
     this.loadYearData();
   },
 
@@ -32,12 +34,16 @@ Page({
   },
 
   async loadYearData() {
+    console.log('[year] ===== loadYearData 开始 =====');
     wx.showLoading({ title: '加载中...' });
     
     try {
       const year = this.data.year;
       const startDate = `${year}-01-01`;
       const endDate = `${year}-12-31`;
+      
+      console.log('[year] 请求年份:', year);
+      console.log('[year] 请求日期范围:', startDate, '~', endDate);
       
       const res = await new Promise((resolve, reject) => {
         wx.request({
@@ -110,12 +116,14 @@ Page({
         }));
         
         this.setData({
-          months,
+          months: [...months],  // 创建新数组引用强制刷新
           yearTotal,
           yearShops: allShops.size,
           thisMonth: thisMonthData.cups,
           thisMonthShops: thisMonthData.shops.size
         });
+        console.log('[year] 数据已更新 setData 完成');
+        console.log('[year] yearTotal:', yearTotal, 'yearShops:', allShops.size);
       } else {
         throw new Error('请求失败');
       }
@@ -144,7 +152,7 @@ Page({
   },
 
   goHome() {
-    wx.switchTab({
+    wx.reLaunch({
       url: '/pages/index/index'
     });
   }

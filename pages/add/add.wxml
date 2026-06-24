@@ -17,15 +17,34 @@
       <text class="header-text" bindtap="toggleIconPicker">点击选择图标</text>
     </view>
     
-    <view class="icon-picker" wx:if="{{showIconPicker}}">
-      <view 
-        wx:for="{{iconList}}" 
-        wx:key="index"
-        class="icon-item {{icon === item ? 'selected' : ''}}"
-        bindtap="selectIcon"
-        data-icon="{{item}}"
-      >
-        <text>{{item}}</text>
+    <view class="icon-picker {{showIconPicker ? 'expanded' : ''}}" wx:if="{{showIconPicker}}">
+      <view class="icon-rows">
+        <scroll-view class="icon-scroll-row" scroll-x>
+          <view class="icon-row">
+            <view 
+              wx:for="{{iconRow1}}" 
+              wx:key="index"
+              class="icon-item {{icon === item ? 'selected' : ''}}"
+              bindtap="selectIcon"
+              data-icon="{{item}}"
+            >
+              <text>{{item}}</text>
+            </view>
+          </view>
+        </scroll-view>
+        <scroll-view class="icon-scroll-row" scroll-x>
+          <view class="icon-row">
+            <view 
+              wx:for="{{iconRow2}}" 
+              wx:key="index"
+              class="icon-item {{icon === item ? 'selected' : ''}}"
+              bindtap="selectIcon"
+              data-icon="{{item}}"
+            >
+              <text>{{item}}</text>
+            </view>
+          </view>
+        </scroll-view>
       </view>
     </view>
     

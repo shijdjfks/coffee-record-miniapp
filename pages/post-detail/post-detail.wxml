@@ -1,0 +1,109 @@
+<view class="container" wx:if="{{post}}">
+  <!-- 顶部导航 -->
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">
+      <text>‹</text>
+    </view>
+    <view class="nav-title">动态详情</view>
+    <view class="nav-right"></view>
+  </view>
+
+  <!-- 动态卡片 -->
+  <view class="post-card">
+    <view class="post-header">
+      <view class="avatar">{{post.avatar}}</view>
+      <view class="user-info">
+        <text class="nickname">{{post.nickname}}</text>
+        <text class="post-time">{{post.createdAt}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{post.text}}" class="post-text">{{post.text}}</view>
+
+    <view 
+      wx:if="{{post.images && post.images.length > 0}}"
+      class="post-images"
+    >
+      <view 
+        class="post-image"
+        wx:for="{{post.images}}"
+        wx:for-item="img"
+        wx:key="*this"
+        wx:for-index="imgIdx"
+      >
+        <text class="image-emoji">{{img}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{post.location}}" class="post-location">
+      <text class="location-icon-small">📍</text>
+      <text class="location-name-small">{{post.location}}</text>
+    </view>
+
+    <view class="post-stats">
+      <view 
+        class="action-btn {{post.liked ? 'liked' : ''}}"
+        bindtap="onLike"
+      >
+        <text class="action-icon">{{post.liked ? '❤️' : '🤍'}}</text>
+        <text class="action-count">{{post.likesCount}}</text>
+      </view>
+      <view class="action-btn">
+        <text class="action-icon">💬</text>
+        <text class="action-count">{{post.commentsCount}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 评论区 -->
+  <view class="comments-section">
+    <view class="comments-title">
+      <text>💬 评论</text>
+      <text class="comments-count">({{post.comments.length}})</text>
+    </view>
+
+    <view 
+      wx:if="{{post.comments.length > 0}}"
+      class="comments-list"
+    >
+      <view 
+        class="comment-item"
+        wx:for="{{post.comments}}"
+        wx:key="id"
+      >
+        <view class="comment-avatar">{{item.avatar}}</view>
+        <view class="comment-body">
+          <view class="comment-header">
+            <text class="comment-name">{{item.nickname}}</text>
+            <text class="comment-time">{{item.createdAt}}</text>
+          </view>
+          <text class="comment-text">{{item.text}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:else class="comments-empty">
+      <text class="empty-icon">💬</text>
+      <text class="empty-text">还没有评论\n快来抢沙发</text>
+    </view>
+  </view>
+
+  <!-- 底部输入框 -->
+  <view class="comment-input-bar">
+    <input 
+      class="comment-input"
+      placeholder="说点什么吧..."
+      placeholder-class="input-placeholder"
+      value="{{commentText}}"
+      bindinput="onCommentInput"
+      confirm-type="send"
+      bindconfirm="onSendComment"
+    />
+    <view 
+      class="send-btn {{commentText ? 'active' : ''}}"
+      bindtap="onSendComment"
+    >
+      <text>发送</text>
+    </view>
+  </view>
+</view>

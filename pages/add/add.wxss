@@ -74,30 +74,52 @@
 }
 
 .icon-picker {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 16rpx;
-  padding: 20rpx;
   background: var(--coffee-lightest);
   border-radius: 16rpx;
   margin-bottom: 24rpx;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+.icon-picker.expanded {
+  max-height: 360rpx;
+}
+
+.icon-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  padding: 16rpx;
+}
+
+.icon-scroll-row {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.icon-row {
+  display: inline-flex;
+  gap: 16rpx;
+  padding: 0 8rpx;
 }
 
 .icon-item {
-  width: 72rpx;
-  height: 72rpx;
-  display: flex;
+  width: 80rpx;
+  height: 80rpx;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   background: #FFF;
   border-radius: 16rpx;
-  font-size: 40rpx;
+  font-size: 44rpx;
   box-shadow: 0 2rpx 8rpx rgba(139, 90, 43, 0.08);
+  flex-shrink: 0;
 }
 
 .icon-item.selected {
   background: var(--coffee-dark);
-  box-shadow: 0 4rpx 12rpx rgba(139, 90, 43, 0.2);
+  box-shadow: 0 4rpx 12rpx rgba(139, 90, 43, 0.3);
 }
 
 .icon-item:active {

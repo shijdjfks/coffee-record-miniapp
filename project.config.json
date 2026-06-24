@@ -47,7 +47,7 @@
     "disableSWC": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.0.0",
+  "libVersion": "3.16.0",
   "appid": "wxc0f6e52a1c6939d3",
   "projectname": "brewlog",
   "cloudfunctionRoot": "cloudfunctions/",

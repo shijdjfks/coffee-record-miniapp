@@ -18,21 +18,26 @@
     <view class="welcome-text accent">咖啡时光</view>
   </view>
 
-  <view class="features">
-    <view class="feature-item" bindtap="goToAddRecord">
-      <text class="feature-icon">📅</text>
-      <text class="feature-text">记录每日咖啡</text>
-      <text class="feature-arrow">›</text>
+  <view class="features-grid">
+    <view class="feature-card" bindtap="goToAddRecord">
+      <view class="feature-card-icon">📝</view>
+      <view class="feature-card-title">记录咖啡</view>
+      <view class="feature-card-subtitle">每日咖啡时光</view>
     </view>
-    <view class="feature-item" bindtap="goToCamera">
-      <text class="feature-icon">📸</text>
-      <text class="feature-text">拍照留念分享</text>
-      <text class="feature-arrow">›</text>
+    <view class="feature-card" bindtap="goToStats">
+      <view class="feature-card-icon">📊</view>
+      <view class="feature-card-title">统计图表</view>
+      <view class="feature-card-subtitle">喝咖啡习惯</view>
     </view>
-    <view class="feature-item" bindtap="goToStats">
-      <text class="feature-icon">📊</text>
-      <text class="feature-text">统计喝咖啡习惯</text>
-      <text class="feature-arrow">›</text>
+    <view class="feature-card" bindtap="goToCamera">
+      <view class="feature-card-icon">📸</view>
+      <view class="feature-card-title">拍照留念</view>
+      <view class="feature-card-subtitle">记录美好瞬间</view>
+    </view>
+    <view class="feature-card" bindtap="getUserProfile">
+      <view class="feature-card-icon">👤</view>
+      <view class="feature-card-title">个人中心</view>
+      <view class="feature-card-subtitle">登录/设置</view>
     </view>
   </view>
 

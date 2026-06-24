@@ -1,0 +1,95 @@
+<view class="container">
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">
+      <text class="back-icon">‹</text>
+    </view>
+    <view class="nav-title">注册</view>
+    <view class="nav-right"></view>
+  </view>
+
+  <view class="register-header">
+    <view class="logo-icon">☕</view>
+    <view class="register-title">加入咖啡手帐</view>
+    <view class="register-subtitle">开启你的咖啡记录之旅</view>
+  </view>
+
+  <view class="register-card">
+    <!-- 手机号 -->
+    <view class="input-group {{phoneFocused ? 'focused' : ''}}">
+      <text class="input-icon">📱</text>
+      <input 
+        class="input-field"
+        type="number"
+        maxlength="11"
+        placeholder="请输入手机号"
+        placeholder-class="input-placeholder"
+        value="{{phone}}"
+        bindinput="onPhoneInput"
+        bindfocus="onPhoneFocus"
+        bindblur="onPhoneBlur"
+      />
+    </view>
+
+    <view class="input-divider"></view>
+
+    <!-- 验证码 -->
+    <view class="input-group code-group {{codeFocused ? 'focused' : ''}}">
+      <text class="input-icon">🔢</text>
+      <input 
+        class="input-field"
+        type="number"
+        maxlength="6"
+        placeholder="请输入验证码"
+        placeholder-class="input-placeholder"
+        value="{{code}}"
+        bindinput="onCodeInput"
+        bindfocus="onCodeFocus"
+        bindblur="onCodeBlur"
+      />
+      <view 
+        class="code-btn {{canSendCode ? '' : 'disabled'}}"
+        bindtap="sendCode"
+      >
+        <text>{{canSendCode ? '获取验证码' : countdown + 's 后重发'}}</text>
+      </view>
+    </view>
+
+    <view class="input-divider"></view>
+
+    <!-- 密码 -->
+    <view class="input-group {{passwordFocused ? 'focused' : ''}}">
+      <text class="input-icon">🔒</text>
+      <input 
+        class="input-field"
+        password="{{true}}"
+        placeholder="请设置密码"
+        placeholder-class="input-placeholder"
+        value="{{password}}"
+        bindinput="onPasswordInput"
+        bindfocus="onPasswordFocus"
+        bindblur="onPasswordBlur"
+      />
+    </view>
+  </view>
+
+  <button class="register-btn" bindtap="doRegister">
+    <text>注 册</text>
+  </button>
+
+  <view class="other-login">
+    <view class="other-login-divider"></view>
+    <text class="other-login-text">使用其他方式登录</text>
+    <view class="other-login-divider"></view>
+  </view>
+
+  <view class="social-buttons">
+    <view class="social-btn" bindtap="onWechatLogin">
+      <view class="social-icon wechat">💬</view>
+      <text class="social-label">微信登录</text>
+    </view>
+    <view class="social-btn" bindtap="onQQLogin">
+      <view class="social-icon qq">🐧</view>
+      <text class="social-label">QQ登录</text>
+    </view>
+  </view>
+</view>

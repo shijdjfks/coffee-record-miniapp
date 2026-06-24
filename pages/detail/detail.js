@@ -11,7 +11,7 @@ Page({
     const id = options.id;
     if (id && id !== 'undefined' && id !== 'null') {
       this.setData({ id: id });
-      this.loadDetail(id);
+      // 不在此处调用 loadDetail，由 onShow 统一处理加载
     } else {
       wx.showToast({ title: '参数错误', icon: 'none' });
       console.error('[detail] 无效的 id:', id);
@@ -20,9 +20,16 @@ Page({
 
   // 每次页面显示时都重新加载数据（解决编辑后不更新的问题）
   onShow() {
-    console.log('[detail] onShow, id:', this.data.id);
-    if (this.data.id && this.data.id !== 'undefined') {
-      this.loadDetail(this.data.id);
+    console.log('[detail] ===== onShow 调用 =====');
+    console.log('[detail] this.data.id:', this.data.id, typeof this.data.id);
+    console.log('[detail] this.data.record:', this.data.record);
+    
+    const id = this.data.id;
+    if (id && id !== 'undefined' && id !== 'null' && id !== '') {
+      console.log('[detail] onShow 准备调用 loadDetail, id:', id);
+      this.loadDetail(id);
+    } else {
+      console.log('[detail] onShow 未执行加载，id 无效');
     }
   },
 
@@ -114,7 +121,7 @@ Page({
   },
 
   goHome() {
-    wx.switchTab({
+    wx.reLaunch({
       url: '/pages/index/index'
     });
   }

@@ -12,7 +12,9 @@ Page({
     isEditing: false,
     sizes: ['小杯', '中杯', '大杯', '超大杯'],
     showIconPicker: false,
-    iconList: ['☕', '🍵', '🧋', '🥤', '☕️', '🫖', '🫘', '🥛', '🍺', '🍷', '🍹', '🧃', '💧', '🧊', '🌸', '🍀']
+    iconList: ['☕', '🍵', '🧋', '🥤', '☕️', '🫖', '🫘', '🥛', '🍺', '🍷', '🍹', '🧃', '💧', '🧊', '🌸', '🍀'],
+    iconRow1: ['☕', '🍵', '🧋', '🥤', '☕️', '🫖', '🫘', '🥛'],
+    iconRow2: ['🍺', '🍷', '🍹', '🧃', '💧', '🧊', '🌸', '🍀']
   },
 
   // 后端 API 基础地址（开发阶段用 localhost，需在工具中勾选“不校验合法域名”）
@@ -132,7 +134,9 @@ Page({
   // 保存记录（新增或更新）
   async saveRecord() {
     const { isEditing, id, coffeeName, shop, date, cups, size, notes, photo, icon } = this.data;
-    console.log('[add] saveRecord 开始，isEditing:', isEditing, 'id:', id);
+    console.log('[add] ===== saveRecord 开始 =====');
+    console.log('[add] isEditing:', isEditing);
+    console.log('[add] id:', id, typeof id);
     console.log('[add] 当前选择的 icon:', icon);
 
     // 安全检查：编辑模式下必须要有有效的 id
@@ -222,24 +226,10 @@ Page({
       wx.hideLoading();
       wx.showToast({ title: '已保存', icon: 'success' });
 
-      // 通知上一页刷新数据
-      const pages = getCurrentPages();
-      const prevPage = pages[pages.length - 2];  // 获取上一个页面实例
-      console.log('[add] 保存成功，通知上一页刷新, prevPage:', prevPage ? prevPage.route : 'null');
-      if (prevPage && prevPage.loadDetail) {
-        // 详情页：调用其 loadDetail 刷新数据
-        prevPage.loadDetail(this.data.id);
-      } else if (prevPage && prevPage.initWeekView) {
-        // 周视图：调用其刷新方法
-        prevPage.initWeekView();
-      } else if (prevPage && prevPage.loadMonthData) {
-        // 月视图：调用其刷新方法
-        prevPage.loadMonthData();
-      }
-
+      // 直接返回，详情页的 onShow 会自动重新加载数据
       setTimeout(() => {
         wx.navigateBack();
-      }, 500);  // 稍微延迟，确保刷新完成
+      }, 500);
     } catch (err) {
       wx.hideLoading();
       console.error('保存失败:', err);
@@ -269,7 +259,7 @@ Page({
   },
 
   goHome() {
-    wx.switchTab({
+    wx.reLaunch({
       url: '/pages/index/index'
     });
   }

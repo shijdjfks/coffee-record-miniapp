@@ -1,12 +1,17 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/index/index",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/feed/feed",
+    "pages/publish/publish",
+    "pages/post-detail/post-detail",
     "pages/year/year",
     "pages/month/month",
     "pages/week/week",
     "pages/detail/detail",
-    "pages/add/add"
+    "pages/add/add",
+    "pages/profile/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,87 @@
+<view class="container">
+  <!-- 顶部 -->
+  <view class="header">
+    <view class="header-title">☕ 咖啡圈</view>
+    <view class="header-publish" bindtap="onPublish">
+      <text class="publish-icon">✏️</text>
+    </view>
+  </view>
+
+  <!-- 动态列表 -->
+  <view class="feed-list">
+    <view 
+      class="post-card"
+      wx:for="{{posts}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="onPostDetail"
+    >
+      <!-- 用户信息 -->
+      <view class="post-header">
+        <view class="avatar">{{item.avatar}}</view>
+        <view class="user-info">
+          <text class="nickname">{{item.nickname}}</text>
+          <text class="post-time">{{item.createdAt}}</text>
+        </view>
+      </view>
+
+      <!-- 文字内容 -->
+      <view wx:if="{{item.text}}" class="post-text">{{item.text}}</view>
+
+      <!-- 图片 -->
+      <view 
+        wx:if="{{item.images && item.images.length > 0}}"
+        class="post-images"
+      >
+        <view 
+          class="post-image {{item.images.length === 1 ? 'single' : ''}}"
+          wx:for="{{item.images}}"
+          wx:for-item="img"
+          wx:key="*this"
+          wx:for-index="imgIdx"
+          data-index="{{imgIdx}}"
+          data-images="{{item.images}}"
+          catchtap="onPreviewImage"
+        >
+          <text class="image-emoji">{{img}}</text>
+        </view>
+      </view>
+
+      <!-- 位置 -->
+      <view wx:if="{{item.location}}" class="post-location">
+        <text class="location-icon-small">📍</text>
+        <text class="location-name-small">{{item.location}}</text>
+      </view>
+
+      <!-- 操作栏 -->
+      <view class="post-actions">
+        <view 
+          class="action-btn {{item.liked ? 'liked' : ''}}"
+          catchtap="onLike"
+          data-id="{{item.id}}"
+        >
+          <text class="action-icon">{{item.liked ? '❤️' : '🤍'}}</text>
+          <text class="action-count">{{item.likesCount}}</text>
+        </view>
+        <view class="action-btn">
+          <text class="action-icon">💬</text>
+          <text class="action-count">{{item.commentsCount}}</text>
+        </view>
+        <view class="action-btn">
+          <text class="action-icon">↗️</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{posts.length === 0}}" class="empty">
+      <text class="empty-icon">☕</text>
+      <text class="empty-text">还没有动态\n快去发布第一条吧</text>
+    </view>
+  </view>
+
+  <!-- 浮动发布按钮 -->
+  <view class="float-publish" bindtap="onPublish">
+    <text>✏️</text>
+  </view>
+</view>

@@ -1,0 +1,146 @@
+.container {
+  min-height: 100vh;
+  background: var(--coffee-lightest);
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+/* ===== 用户信息卡片 ===== */
+.user-card {
+  background: linear-gradient(135deg, var(--coffee-dark) 0%, var(--coffee-medium) 100%);
+  border-radius: 24rpx;
+  padding: 40rpx 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(139, 90, 43, 0.15);
+}
+
+.avatar-wrapper {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  margin-bottom: 16rpx;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+}
+
+.user-info {
+  text-align: center;
+  margin-bottom: 16rpx;
+}
+
+.nickname {
+  display: block;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #FFF;
+  margin-bottom: 4rpx;
+}
+
+.bio {
+  display: block;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.login-tip-btn {
+  font-size: 24rpx;
+  color: var(--coffee-dark);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 40rpx;
+  padding: 12rpx 40rpx;
+  border: none;
+  font-weight: 500;
+}
+
+.login-tip-btn::after {
+  border: none;
+}
+
+.login-tip-btn:active {
+  background: #FFF;
+}
+
+/* ===== 统计概览 ===== */
+.stats-row {
+  display: flex;
+  background: #FFF;
+  border-radius: 20rpx;
+  padding: 24rpx 16rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(139, 90, 43, 0.06);
+}
+
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-item + .stat-item {
+  border-left: 1rpx solid var(--coffee-lightest);
+}
+
+.stat-num {
+  font-size: 36rpx;
+  font-weight: 800;
+  color: var(--coffee-dark);
+  margin-bottom: 4rpx;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: var(--coffee-light);
+}
+
+/* ===== 菜单组 ===== */
+.menu-group {
+  background: #FFF;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(139, 90, 43, 0.06);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+}
+
+.menu-item + .menu-item {
+  border-top: 1rpx solid var(--coffee-lightest);
+}
+
+.menu-item:active {
+  background: var(--coffee-lightest);
+}
+
+.menu-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+  width: 44rpx;
+  text-align: center;
+}
+
+.menu-text {
+  flex: 1;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--coffee-darker);
+}
+
+.menu-arrow {
+  font-size: 36rpx;
+  color: var(--coffee-light);
+  font-weight: 300;
+}
